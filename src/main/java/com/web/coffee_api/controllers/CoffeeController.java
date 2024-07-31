@@ -1,5 +1,6 @@
 package com.web.coffee_api.controllers;
 
-public class CoffeeController {
+import com.web.coffee_api.entities.Coffee;
 
+public class CoffeeController {
 }
