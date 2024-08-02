@@ -9,3 +9,7 @@ services:
       - 'MYSQL_USER=savio'
     ports:
       - '3306:3306'
+  backend:
+    image: 'coffee-api:1'
+    ports:
+      - '8080:8080'
