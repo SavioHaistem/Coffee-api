@@ -1,6 +1,4 @@
 package com.web.coffee_api;
-
-import com.web.coffee_api.entities.Coffee;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

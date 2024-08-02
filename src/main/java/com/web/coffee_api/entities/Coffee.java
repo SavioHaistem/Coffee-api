@@ -1,8 +1,6 @@
 package com.web.coffee_api.entities;
 import lombok.*;
 
-import java.util.ArrayList;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
