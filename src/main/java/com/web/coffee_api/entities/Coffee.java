@@ -6,8 +6,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import javax.management.ConstructorParameters;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -16,8 +19,12 @@ public class Coffee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     private String name;
+    @NonNull
     private String description;
+    @NonNull
     private Double quantity;
+    @NonNull
     private Double price;
 }

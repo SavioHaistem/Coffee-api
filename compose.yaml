@@ -1,15 +1,21 @@
-version: '3.1'
+version: '3.7'
 services:
-  db:
+  database:
     image: 'mysql:latest'
     environment:
       - 'MYSQL_DATABASE=mysql'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
       - 'MYSQL_USER=savio'
+      - 'MYSQL_ROOT_PASSWORD=secret'
     ports:
       - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
   backend:
+    container_name: coffee-api
     image: 'coffee-api:1'
     ports:
       - '8080:8080'
+    depends_on:
+      - database
+volumes:
+  db_data:

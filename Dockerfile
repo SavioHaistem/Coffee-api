@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=build /app/target/coffee-api-0.0.1-SNAPSHOT.jar ./coffee-api.jar
 
 #expose port
-EXPOSE "8080:8080"
+EXPOSE "8080"
 
 #start application
 CMD ["java", "-jar", "./coffee-api.jar"]

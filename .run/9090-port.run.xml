@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="9090-port" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.web.coffee_api.CoffeeApiApplication" />
+    <module name="coffee-api" />
+    <option name="VM_PARAMETERS" value="-Dserver.port=9090" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
