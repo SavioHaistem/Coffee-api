@@ -20,9 +20,6 @@ WORKDIR /app
 #copy artefact compiling the compiler stage
 COPY --from=build /app/target/coffee-api-0.0.1-SNAPSHOT.jar ./coffee-api.jar
 
-#expose port
-EXPOSE "8080"
-
 #start application
 CMD ["java", "-jar", "./coffee-api.jar"]
 LABEL authors="savio"
