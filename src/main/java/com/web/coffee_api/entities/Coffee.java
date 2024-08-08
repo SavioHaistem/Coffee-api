@@ -5,8 +5,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
-
 import javax.management.ConstructorParameters;
+import java.io.Serial;
+import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,16 +16,18 @@ import javax.management.ConstructorParameters;
 @Setter
 @Entity
 @Table(name = "coffees_tb")
-public class Coffee {
+public class Coffee implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NonNull
+    @lombok.NonNull
     private String name;
-    @NonNull
+    @lombok.NonNull
     private String description;
-    @NonNull
+    @lombok.NonNull
     private Double quantity;
-    @NonNull
+    @lombok.NonNull
     private Double price;
 }

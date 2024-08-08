@@ -1,16 +1,19 @@
 package com.web.coffee_api.controllers;
 
 import com.web.coffee_api.entities.Coffee;
+import com.web.coffee_api.services.CoffeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping(value = "/")
+@RestController
+@RequestMapping(value = "/coffees")
 public class CoffeeController {
-    @GetMapping
-    public ResponseEntity<Coffee> getById() {
-        return ResponseEntity.ok().body(new Coffee(1L,"lunatic coffee","lunar coffee",1.0,10.0));
+    @Autowired
+    private CoffeeService coffeeService;
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Coffee> getById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(coffeeService.findById(id));
     }
 }
