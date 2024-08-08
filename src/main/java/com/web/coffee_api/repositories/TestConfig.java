@@ -1,7 +1,5 @@
 package com.web.coffee_api.repositories;
-
 import com.web.coffee_api.entities.Coffee;
-import com.web.coffee_api.services.CoffeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

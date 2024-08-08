@@ -5,7 +5,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
-import javax.management.ConstructorParameters;
 import java.io.Serial;
 import java.io.Serializable;
 
