@@ -15,7 +15,7 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Coffee cf1 = new Coffee(null,"Lunatic Coffee","A Lunarian Coffee of moon light",1.0,20.0);
+        Coffee cf1 = new Coffee(null,"Lunatic Coffee","A Lunar Coffee of moon light",1.0,20.0);
         Coffee cf2 = new Coffee(null,"Earth Coffee","Made by Humans in Earth",1.0,2.0);
         Coffee cf3 = new Coffee(null,"Solar Coffee","Hot coffee made by sunlight",1.0,12.0);
         coffeeRepository.saveAll(Arrays.asList(cf1,cf2,cf3));
