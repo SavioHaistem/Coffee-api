@@ -25,6 +25,8 @@ public class Cup implements Serializable {
     @lombok.NonNull
     private String description;
     @lombok.NonNull
+    @OneToOne
+    @JoinColumn(name = "coffee_id",referencedColumnName = "id")
     private Coffee coffee;
     @ManyToOne
     @JoinColumn(name = "cup_size_id")

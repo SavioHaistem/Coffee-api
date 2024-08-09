@@ -1,9 +1,5 @@
 package com.web.coffee_api.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -26,7 +22,8 @@ public class Coffee implements Serializable {
     @lombok.NonNull
     private String description;
     @lombok.NonNull
-    private Double quantity;
+    @OneToOne(mappedBy = "coffee")
+    private Cup cup;
     @lombok.NonNull
     private Double price;
 }
