@@ -10,7 +10,7 @@ public class CoffeeService {
     @Autowired
     private CoffeeRepository repository;
 
-    public void insertCoffee(Coffee coffee) {
+    public void put(Coffee coffee) {
         repository.save(coffee);
         //TODO: check Coffee
     }

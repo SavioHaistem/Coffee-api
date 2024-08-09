@@ -22,7 +22,7 @@ public class CupSize implements Serializable {
     private Long id;
     @lombok.NonNull
     private Size size;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cupSize")
     @lombok.NonNull
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cupSize")
     private List<Cup> cups;
 }
