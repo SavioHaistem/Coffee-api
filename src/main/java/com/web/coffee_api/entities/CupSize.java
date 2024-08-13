@@ -5,11 +5,15 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
 @Entity
@@ -19,10 +23,16 @@ public class CupSize implements Serializable {
     private final static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
+
     @lombok.NonNull
-    private Size size;
-    @lombok.NonNull
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cupSize")
-    private List<Cup> cups;
+    private int size;
+
+    @ManyToMany(mappedBy = "cupSizes", cascade = CascadeType.ALL)
+    private Set<Cup> cups = new HashSet<>();
+
+    public CupSize(Size size) {
+        this.size = size.getSizeValue();
+    }
 }
