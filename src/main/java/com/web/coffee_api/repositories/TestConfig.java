@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @Configuration
-@Profile("dev")
+@Profile("h2")
 public class TestConfig implements CommandLineRunner {
     @Autowired
     private CoffeeRepository coffeeRepository;
