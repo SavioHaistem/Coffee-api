@@ -10,9 +10,8 @@ public class CoffeeService {
     @Autowired
     private CoffeeRepository repository;
 
-    public void put(Coffee coffee) {
+    public void insert(Coffee coffee) {
         repository.save(coffee);
-        //TODO: check Coffee
     }
     public Coffee findById(Long id) {
         //TODO: orElseThrow personalized error

@@ -21,11 +21,17 @@ public class CoffeeController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "coffee found with success"),
             @ApiResponse(responseCode = "404", description = "coffee not found"),
-            @ApiResponse(responseCode = "500", description = "internal server error")
+            @ApiResponse(responseCode = "500", description = "erro ainda nao tratado")
     })
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Coffee> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(coffeeService.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
+        coffeeService.insert(coffee);
+        return ResponseEntity.ok().body(coffee);
     }
 }
