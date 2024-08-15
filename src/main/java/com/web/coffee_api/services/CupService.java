@@ -13,7 +13,9 @@ public class CupService {
 
     @EntityGraph(attributePaths = {"coffees","cupSizes"})
     public Cup findById(Long id) {
-        return cupRepository.findById(id).orElse(null);
+        Cup cup = cupRepository.findById(id).orElse(null);
+        System.out.println("cuffs: " + (cup != null ? cup.getCoffees().size() : "null"));
+        return cup;
     }
 
     public void put(Cup cup) {

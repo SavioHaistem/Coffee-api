@@ -29,10 +29,16 @@ public class CoffeeController {
             @ApiResponse(responseCode = "404", description = "coffee not found"),
             @ApiResponse(responseCode = "500", description = "erro ainda nao tratado")
     })
-
+/*
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Coffee> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(coffeeService.findById(id));
+    }
+*/
+    //get cups test
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Cup> getCupById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(cupService.findById(id));
     }
 
     @Operation(summary = "insert one coffee on coffees database", method = "POST")
