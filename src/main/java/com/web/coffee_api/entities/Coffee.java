@@ -3,15 +3,12 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
+@Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
-@Setter
 @Entity
 @Table(name = "coffees_tb")
 public class Coffee implements Serializable {
@@ -21,16 +18,7 @@ public class Coffee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-
-    @lombok.NonNull
     private String name;
-
-    @lombok.NonNull
     private String description;
-
-    @ManyToMany(mappedBy = "coffees")
-    private Set<Cup> cups = new HashSet<>();
-
-    @lombok.NonNull
     private Double price;
 }

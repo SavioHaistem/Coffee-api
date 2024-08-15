@@ -14,8 +14,6 @@ public class CoffeeService {
         repository.save(coffee);
     }
     public Coffee findById(Long id) {
-        //TODO: orElseThrow personalized error
         return repository.findById(id).orElse(null);
     }
-
 }
