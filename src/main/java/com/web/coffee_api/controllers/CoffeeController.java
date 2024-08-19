@@ -20,6 +20,8 @@ import java.util.Set;
 public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
+    @Autowired
+    private CupService cupService;
 
     @Operation(summary = "search for a coffee that has the given id", method = "GET")
     @ApiResponses(value = {
@@ -40,5 +42,10 @@ public class CoffeeController {
     public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
         coffeeService.insert(coffee);
         return ResponseEntity.ok().body(coffee);
+    }
+
+    @GetMapping(value = "/cups/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Cup> getCupById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(cupService.findById(id));
     }
 }

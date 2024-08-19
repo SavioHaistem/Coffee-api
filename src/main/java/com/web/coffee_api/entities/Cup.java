@@ -10,7 +10,8 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "cup_tb")
 public class Cup implements Serializable {
@@ -28,13 +29,11 @@ public class Cup implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "coffee_id", referencedColumnName = "id"))
     private Set<Coffee> coffees = new HashSet<>();
 
-    /*
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "cup_size_tb",
             joinColumns = @JoinColumn(name = "cup_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "size_id", referencedColumnName = "id"))
-    private Set<Size> sizes = new HashSet<>(); */
+    private Set<CupSize> sizes = new HashSet<>();
 
     public Cup(Long id, String name) {
         this.id = id;
