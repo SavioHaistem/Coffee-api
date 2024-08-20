@@ -43,9 +43,4 @@ public class CoffeeController {
         coffeeService.insert(coffee);
         return ResponseEntity.ok().body(coffee);
     }
-
-    @GetMapping(value = "/cups/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Cup> getCupById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(cupService.findById(id));
-    }
 }
