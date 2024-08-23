@@ -63,4 +63,13 @@ public class CoffeeController {
     public void removeById(@PathVariable Long id) {
         coffeeService.deleteById(id);
     }
+
+    @PutMapping(value = "/{id}")
+    @Operation(summary = "update one coffee based on id, it will return a updated coffee")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "update coffee success")
+    })
+    public ResponseEntity<Coffee> updateCoffeeById(@PathVariable Long id, @RequestBody Coffee newCoffee) {
+        return ResponseEntity.ok().body(coffeeService.updateCoffeeById(id, newCoffee));
+    }
 }

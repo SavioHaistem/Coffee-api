@@ -24,4 +24,13 @@ public class CoffeeService {
     public void deleteById(long id) {
         repository.deleteById(id);
     }
+    public Coffee updateCoffeeById(Long id, Coffee newCoffee) {
+        Coffee updatedCoffee = repository.findById(id).orElseThrow();
+        updatedCoffee.setName(newCoffee.getName());
+        updatedCoffee.setPrice(newCoffee.getPrice());
+        updatedCoffee.setDescription(newCoffee.getDescription());
+        updatedCoffee.setCups(newCoffee.getCups());
+        repository.saveAndFlush(updatedCoffee);
+        return repository.findById(id).orElseThrow();
+    }
 }
