@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CoffeeApiApplication {
+	//TODO: add javadoc
+	//TODO: refactor
 	public static void main(String[] args) {
 		SpringApplication.run(CoffeeApiApplication.class, args);
 	}

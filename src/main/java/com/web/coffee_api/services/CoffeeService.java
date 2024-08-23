@@ -11,7 +11,6 @@ import java.util.List;
 public class CoffeeService {
     @Autowired
     private CoffeeRepository repository;
-
     public void insert(Coffee coffee) {
         repository.save(coffee);
     }
@@ -25,6 +24,7 @@ public class CoffeeService {
         repository.deleteById(id);
     }
     public Coffee updateCoffeeById(Long id, Coffee newCoffee) {
+        //TODO: update cups
         Coffee updatedCoffee = repository.findById(id).orElseThrow();
         updatedCoffee.setName(newCoffee.getName());
         updatedCoffee.setPrice(newCoffee.getPrice());
