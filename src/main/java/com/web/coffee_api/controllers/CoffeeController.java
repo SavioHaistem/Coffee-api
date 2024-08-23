@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -23,21 +24,32 @@ public class CoffeeController {
     @Autowired
     private CupService cupService;
 
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "search for a coffee that has the given id", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "coffee found with success"),
             @ApiResponse(responseCode = "404", description = "coffee not found"),
-            @ApiResponse(responseCode = "500", description = "erro ainda nao tratado")
+            @ApiResponse(responseCode = "500", description = "untreated exception")
     })
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Coffee> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(coffeeService.findById(id));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "returns a list of all the coffees in the database")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "operation success return a list of all coffees"),
+            @ApiResponse(responseCode = "500",description = "untreated exception")
+    })
+    public ResponseEntity<List<Coffee>> getCoffees() {
+        return ResponseEntity.ok().body(coffeeService.findAll());
     }
 
     @PostMapping
     @Operation(summary = "insert one coffee on coffees database", method = "POST")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "create coffee operation sucess"),
+            @ApiResponse(responseCode = "202", description = "create coffee operation success"),
+            //TODO: handle error of not inserted objects
     })
     public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
         coffeeService.insert(coffee);
