@@ -21,8 +21,6 @@ import java.util.Set;
 public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
-    @Autowired
-    private CupService cupService;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "search for a coffee that has the given id", method = "GET")
@@ -48,11 +46,21 @@ public class CoffeeController {
     @PostMapping
     @Operation(summary = "insert one coffee on coffees database", method = "POST")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "202", description = "create coffee operation success"),
+            @ApiResponse(responseCode = "201", description = "created coffee operation success"),
             //TODO: handle error of not inserted objects
     })
     public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
         coffeeService.insert(coffee);
         return ResponseEntity.ok().body(coffee);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @Operation(summary = "delete one coffee based on id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204",description = "coffee removed with success"),
+            @ApiResponse(responseCode = "500",description = "untreated exception")
+    })
+    public void removeById(@PathVariable Long id) {
+        coffeeService.deleteById(id);
     }
 }
