@@ -1,7 +1,5 @@
 package com.web.coffee_api.entities;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.extern.jackson.Jacksonized;
 
 import java.beans.ConstructorProperties;
 import java.io.Serial;
@@ -10,10 +8,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "coffees_tb")
 public class Coffee implements Serializable {
@@ -26,9 +20,11 @@ public class Coffee implements Serializable {
     private String description;
 
     @ManyToMany(mappedBy = "coffees")
-    private Set<Cup> cups = new HashSet<>();
+    private final Set<Cup> cups = new HashSet<>();
 
     private Double price;
+
+    public Coffee() {}
 
     public Coffee(Long id, String name, String description, Double price) {
         this.id = id;
@@ -48,5 +44,41 @@ public class Coffee implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Cup> getCups() {
+        return cups;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

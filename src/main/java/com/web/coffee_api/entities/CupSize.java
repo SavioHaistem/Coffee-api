@@ -2,16 +2,12 @@ package com.web.coffee_api.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Setter
-@Getter
 @Entity
 @Table(name = "size_tb")
 public class CupSize implements Serializable {
@@ -21,7 +17,7 @@ public class CupSize implements Serializable {
     private Size size;
     @JsonIgnore
     @ManyToMany(mappedBy = "sizes")
-    private Set<Cup> cups = new HashSet<>();
+    private final Set<Cup> cups = new HashSet<>();
 
     public CupSize() {
     }
@@ -31,10 +27,24 @@ public class CupSize implements Serializable {
         this.size = size;
     }
 
-    public CupSize(Long id, Size size, Set<Cup> cups) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
         this.size = size;
-        this.cups = cups;
+    }
+
+    public Set<Cup> getCups() {
+        return cups;
     }
 
     @Override

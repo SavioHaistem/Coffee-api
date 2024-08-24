@@ -11,8 +11,9 @@ import java.util.List;
 public class CoffeeService {
     @Autowired
     private CoffeeRepository repository;
-    public void insert(Coffee coffee) {
+    public Coffee insert(Coffee coffee) {
         repository.save(coffee);
+        return repository.findById(coffee.getId()).orElseThrow();
     }
     public Coffee findById(Long id) {
         return repository.findById(id).orElse(null);
@@ -29,8 +30,6 @@ public class CoffeeService {
         updatedCoffee.setName(newCoffee.getName());
         updatedCoffee.setPrice(newCoffee.getPrice());
         updatedCoffee.setDescription(newCoffee.getDescription());
-        updatedCoffee.setCups(newCoffee.getCups());
-        repository.saveAndFlush(updatedCoffee);
         return repository.findById(id).orElseThrow();
     }
 }

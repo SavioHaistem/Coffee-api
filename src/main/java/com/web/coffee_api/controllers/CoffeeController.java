@@ -50,8 +50,7 @@ public class CoffeeController {
             //TODO: handle error of not inserted objects
     })
     public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
-        coffeeService.insert(coffee);
-        return ResponseEntity.ok().body(coffee);
+        return ResponseEntity.ok().body(coffeeService.insert(coffee));
     }
 
     @DeleteMapping(value = "/{id}")

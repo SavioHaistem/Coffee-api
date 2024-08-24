@@ -17,7 +17,7 @@ public class CupService {
         System.out.println("cuffs: " + (cup != null ? cup.getCoffees().size() : "null"));
         return cup;
     }
-
+    
     public void put(Cup cup) {
         cupRepository.save(cup);
     }
