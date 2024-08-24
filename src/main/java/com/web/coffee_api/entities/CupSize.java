@@ -27,6 +27,10 @@ public class CupSize implements Serializable {
         this.size = size;
     }
 
+    public void addCup(Cup cup) {
+        cups.add(cup);
+    }
+
     public Long getId() {
         return id;
     }

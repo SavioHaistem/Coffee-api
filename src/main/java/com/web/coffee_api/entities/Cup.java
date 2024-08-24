@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -38,6 +39,10 @@ public class Cup implements Serializable {
         this.name = name;
     }
 
+    public void addCoffee(Coffee coffee) {
+        coffees.add(coffee);
+    }
+
     public Long getId() {
         return id;
     }
@@ -60,5 +65,20 @@ public class Cup implements Serializable {
 
     public Set<CupSize> getSizes() {
         return sizes;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cup cup)) return false;
+
+        return Objects.equals(id, cup.id) && Objects.equals(sizes, cup.sizes);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hashCode(id);
+        result = 31 * result + Objects.hashCode(sizes);
+        return result;
     }
 }

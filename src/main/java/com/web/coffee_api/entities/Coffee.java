@@ -33,17 +33,8 @@ public class Coffee implements Serializable {
         this.price = price;
     }
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Coffee coffee)) return false;
-
-        return Objects.equals(id, coffee.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public void addCup(Cup cup) {
+        cups.add(cup);
     }
 
     public Long getId() {
@@ -80,5 +71,18 @@ public class Coffee implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coffee coffee)) return false;
+
+        return Objects.equals(id, coffee.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
