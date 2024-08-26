@@ -2,7 +2,6 @@ package com.web.coffee_api.services;
 
 import com.web.coffee_api.entities.Coffee;
 import com.web.coffee_api.entities.Cup;
-import com.web.coffee_api.entities.CupSize;
 import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,6 @@ public class CoffeeService {
     private CupRepository cupRepository;
 
     public Coffee insert(Coffee coffee) {
-        for (Cup coffeeCup : coffee.getCups()) {
-            Cup repositoryCup = cupRepository.findById(coffeeCup.getId()).orElse(coffeeCup);
-
-            cupRepository.save(repositoryCup);
-        }
         repository.save(coffee);
         return repository.findById(coffee.getId()).orElseThrow();
     }

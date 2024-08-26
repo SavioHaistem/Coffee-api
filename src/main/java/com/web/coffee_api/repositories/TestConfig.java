@@ -34,9 +34,9 @@ public class TestConfig implements CommandLineRunner {
         Coffee cf4 = new Coffee(null,"Math Coffee","The more smart coffee of earth",8.0);
         coffeeRepository.saveAll(Arrays.asList(cf1,cf2,cf3,cf4));
 
-        Cup cu1 = new Cup(null,"Lunar cup");
-        Cup cu2 = new Cup(null,"Porcelain cup");
-        Cup cu3 = new Cup(null,"Glass cup");
+        Cup cu1 = new Cup(null,"Lunar cup",s1);
+        Cup cu2 = new Cup(null,"Porcelain cup",s2);
+        Cup cu3 = new Cup(null,"Glass cup",s3);
 
         cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
     }

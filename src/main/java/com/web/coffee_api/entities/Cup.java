@@ -1,12 +1,9 @@
 package com.web.coffee_api.entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "cup_tb")
@@ -17,33 +14,17 @@ public class Cup implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
     @ManyToOne
     @JoinColumn(name = "size_id")
     private CupSize size;
 
-    @ManyToOne
-    @JoinColumn(name = "coffee_id")
-    private Coffee coffee;
-
     public Cup() {
     }
 
-    public Cup(Long id, String name) {
+    public Cup(Long id, String name, CupSize size) {
         this.id = id;
         this.name = name;
-    }
-
-    public void addCoffee(Coffee coffee) {
-        coffees.add(coffee);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.size = size;
     }
 
     public String getName() {
@@ -62,14 +43,6 @@ public class Cup implements Serializable {
         this.size = size;
     }
 
-    public Coffee getCoffee() {
-        return coffee;
-    }
-
-    public void setCoffee(Coffee coffee) {
-        this.coffee = coffee;
-    }
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
@@ -81,20 +54,5 @@ public class Cup implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
-    }
-
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Cup cup)) return false;
-
-        return Objects.equals(id, cup.id) && Objects.equals(sizes, cup.sizes);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(sizes);
-        return result;
     }
 }

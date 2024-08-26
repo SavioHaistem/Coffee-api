@@ -1,8 +1,6 @@
 package com.web.coffee_api.controllers;
 import com.web.coffee_api.entities.Coffee;
-import com.web.coffee_api.entities.Cup;
 import com.web.coffee_api.services.CoffeeService;
-import com.web.coffee_api.services.CupService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -13,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/coffees")

@@ -1,7 +1,6 @@
 package com.web.coffee_api.entities;
 import jakarta.persistence.*;
 
-import java.beans.ConstructorProperties;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -16,13 +15,8 @@ public class Coffee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String description;
-
-    @OneToMany(mappedBy = "coffee")
-    private final Set<Cup> cups = new HashSet<>();
-
     private Double price;
 
     public Coffee() {}
@@ -56,10 +50,6 @@ public class Coffee implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<Cup> getCups() {
-        return cups;
     }
 
     public Double getPrice() {
