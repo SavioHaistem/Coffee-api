@@ -16,10 +16,11 @@ public class Coffee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String description;
 
-    @ManyToMany(mappedBy = "coffees")
+    @OneToMany(mappedBy = "coffee")
     private final Set<Cup> cups = new HashSet<>();
 
     private Double price;
@@ -31,10 +32,6 @@ public class Coffee implements Serializable {
         this.name = name;
         this.description = description;
         this.price = price;
-    }
-
-    public void addCup(Cup cup) {
-        cups.add(cup);
     }
 
     public Long getId() {

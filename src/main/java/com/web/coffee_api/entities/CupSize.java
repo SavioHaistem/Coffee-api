@@ -15,8 +15,8 @@ public class CupSize implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Size size;
-    @JsonIgnore
-    @ManyToMany(mappedBy = "sizes")
+
+    @OneToMany(mappedBy = "size")
     private final Set<Cup> cups = new HashSet<>();
 
     public CupSize() {

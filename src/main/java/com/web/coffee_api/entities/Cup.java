@@ -18,18 +18,13 @@ public class Cup implements Serializable {
     private Long id;
     private String name;
 
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "cup_coffee_tb",
-            joinColumns = @JoinColumn(name = "cup_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "coffee_id", referencedColumnName = "id"))
-    private final Set<Coffee> coffees = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "size_id")
+    private CupSize size;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "cup_size_tb",
-            joinColumns = @JoinColumn(name = "cup_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "size_id", referencedColumnName = "id"))
-    private final Set<CupSize> sizes = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "coffee_id")
+    private Coffee coffee;
 
     public Cup() {
     }
@@ -59,12 +54,33 @@ public class Cup implements Serializable {
         this.name = name;
     }
 
-    public Set<Coffee> getCoffees() {
-        return coffees;
+    public CupSize getSize() {
+        return size;
     }
 
-    public Set<CupSize> getSizes() {
-        return sizes;
+    public void setSize(CupSize size) {
+        this.size = size;
+    }
+
+    public Coffee getCoffee() {
+        return coffee;
+    }
+
+    public void setCoffee(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cup cup)) return false;
+
+        return Objects.equals(id, cup.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override

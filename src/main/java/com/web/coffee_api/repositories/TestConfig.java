@@ -32,20 +32,11 @@ public class TestConfig implements CommandLineRunner {
         Coffee cf2 = new Coffee(null,"Earth Coffee","Made by Humans in Earth",2.0);
         Coffee cf3 = new Coffee(null,"Solar Coffee","Hot coffee made by sunlight",12.0);
         Coffee cf4 = new Coffee(null,"Math Coffee","The more smart coffee of earth",8.0);
+        coffeeRepository.saveAll(Arrays.asList(cf1,cf2,cf3,cf4));
 
         Cup cu1 = new Cup(null,"Lunar cup");
         Cup cu2 = new Cup(null,"Porcelain cup");
         Cup cu3 = new Cup(null,"Glass cup");
-
-        cu1.getSizes().addAll(Arrays.asList(s1,s2));
-        cu2.getSizes().add(s2);
-        cu3.getSizes().addAll(Arrays.asList(s3,s2));
-
-        coffeeRepository.saveAll(Arrays.asList(cf1,cf2,cf3,cf4));
-
-        cu1.getCoffees().addAll(Arrays.asList(cf1,cf4));
-        cu2.getCoffees().addAll(Arrays.asList(cf2,cf3,cf4));
-        cu3.getCoffees().addAll(Arrays.asList(cf3,cf4));
 
         cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
     }
