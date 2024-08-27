@@ -12,12 +12,16 @@ import java.util.Set;
 public class Coffee implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
     private Double price;
+
+    @OneToMany(mappedBy = "coffee")
+    private final Set<CoffeeCup> coffeeCups = new HashSet<>();
 
     public Coffee() {}
 
@@ -58,6 +62,10 @@ public class Coffee implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Set<CoffeeCup> getCoffeeCups() {
+        return coffeeCups;
     }
 
     @Override

@@ -12,6 +12,7 @@ import java.util.Set;
 public class Cup implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,16 +25,15 @@ public class Cup implements Serializable {
     )
     private final Set<CupSize> sizes = new HashSet<>();
 
+    @OneToMany(mappedBy = "cup")
+    private final Set<CoffeeCup> coffeeCups = new HashSet<>();
+
     public Cup() {
     }
 
     public Cup(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public void addSize(CupSize size) {
-        sizes.add(size);
     }
 
     public String getName() {
@@ -46,6 +46,10 @@ public class Cup implements Serializable {
 
     public Set<CupSize> getSizes() {
         return sizes;
+    }
+
+    public Set<CoffeeCup> getCoffeeCups() {
+        return coffeeCups;
     }
 
     @Override
