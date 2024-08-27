@@ -35,7 +35,11 @@ public class CoffeeCup implements Serializable {
         this.id = id;
         this.coffee = coffee;
         this.cup = cup;
-        this.size = size;
+        this.size = checkSize(cup,size) ? size : cup.getSizes().stream().findAny().orElseThrow();
+    }
+
+    public boolean checkSize(Cup cup, CupSize cupSize) {
+        return cup.getSizes().contains(cupSize);
     }
 
     public Coffee getCoffee() {
@@ -63,6 +67,10 @@ public class CoffeeCup implements Serializable {
     }
 
     public void setSize(CupSize size) {
-        this.size = size;
+        if (this.cup.getSizes().contains(size)) {
+            this.size = size;
+        } else {
+            //throw invalid size error
+        }
     }
 }
