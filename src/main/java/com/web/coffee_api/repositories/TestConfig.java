@@ -25,7 +25,6 @@ public class TestConfig implements CommandLineRunner {
         CupSize s1 = new CupSize(null, Size.SMALL);
         CupSize s2 = new CupSize(null, Size.MEDIUM);
         CupSize s3 = new CupSize(null, Size.BIG);
-
         cupSizeRepository.saveAll(Arrays.asList(s1,s2,s3));
 
         Coffee cf1 = new Coffee(null,"Lunatic Coffee","A Lunar Coffee of moon light",20.0);
@@ -34,10 +33,14 @@ public class TestConfig implements CommandLineRunner {
         Coffee cf4 = new Coffee(null,"Math Coffee","The more smart coffee of earth",8.0);
         coffeeRepository.saveAll(Arrays.asList(cf1,cf2,cf3,cf4));
 
-        Cup cu1 = new Cup(null,"Lunar cup",s1);
-        Cup cu2 = new Cup(null,"Porcelain cup",s2);
-        Cup cu3 = new Cup(null,"Glass cup",s3);
+        Cup cu1 = new Cup(null,"Lunar cup");
+        Cup cu2 = new Cup(null,"Porcelain cup");
+        Cup cu3 = new Cup(null,"Glass cup");
+        cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
 
+        cu1.getSizes().addAll(Arrays.asList(s1,s2));
+        cu2.getSizes().addAll(Arrays.asList(s2,s3));
+        cu3.getSizes().addAll(Arrays.asList(s1,s2,s3));
         cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
     }
 }

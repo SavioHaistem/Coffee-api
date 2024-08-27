@@ -3,7 +3,9 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "cup_tb")
@@ -14,17 +16,24 @@ public class Cup implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "size_id")
-    private CupSize size;
+
+    @ManyToMany
+    @JoinTable(name = "cup_size",
+            joinColumns = @JoinColumn(name = "cup_id"),
+            inverseJoinColumns = @JoinColumn(name = "size_id")
+    )
+    private final Set<CupSize> sizes = new HashSet<>();
 
     public Cup() {
     }
 
-    public Cup(Long id, String name, CupSize size) {
+    public Cup(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.size = size;
+    }
+
+    public void addSize(CupSize size) {
+        sizes.add(size);
     }
 
     public String getName() {
@@ -35,12 +44,8 @@ public class Cup implements Serializable {
         this.name = name;
     }
 
-    public CupSize getSize() {
-        return size;
-    }
-
-    public void setSize(CupSize size) {
-        this.size = size;
+    public Set<CupSize> getSizes() {
+        return sizes;
     }
 
     @Override

@@ -15,8 +15,8 @@ public class CupSize implements Serializable {
     private Long id;
     private Size size;
 
-    @OneToMany(mappedBy = "size")
-    private final Set<Cup> cups = new HashSet<>();
+    @ManyToMany(mappedBy = "sizes")
+    private Set<Cup> cups = new HashSet<>();
 
     public CupSize() {
     }
@@ -27,7 +27,7 @@ public class CupSize implements Serializable {
     }
 
     public void addCup(Cup cup) {
-        cups.add(cup);
+        this.cups.add(cup);
     }
 
     public Long getId() {
