@@ -1,4 +1,5 @@
 package com.web.coffee_api.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -20,6 +21,7 @@ public class Coffee implements Serializable {
     private String description;
     private Double price;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "coffee")
     private final Set<CoffeeCup> coffeeCups = new HashSet<>();
 

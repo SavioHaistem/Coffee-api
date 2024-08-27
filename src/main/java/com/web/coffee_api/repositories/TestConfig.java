@@ -1,8 +1,5 @@
 package com.web.coffee_api.repositories;
-import com.web.coffee_api.entities.Coffee;
-import com.web.coffee_api.entities.Cup;
-import com.web.coffee_api.entities.CupSize;
-import com.web.coffee_api.entities.Size;
+import com.web.coffee_api.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +16,8 @@ public class TestConfig implements CommandLineRunner {
     private CupRepository cupRepository;
     @Autowired
     private CupSizeRepository cupSizeRepository;
+    @Autowired
+    private CoffeeCupRepository coffeeCupRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -42,5 +41,9 @@ public class TestConfig implements CommandLineRunner {
         cu2.getSizes().addAll(Arrays.asList(s2,s3));
         cu3.getSizes().addAll(Arrays.asList(s1,s2,s3));
         cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
+
+        CoffeeCup cfcu1 = new CoffeeCup(null,cf1,cu1,s1);
+        CoffeeCup cfcu2 = new CoffeeCup(null,cf1,cu1,s2);
+        coffeeCupRepository.saveAll(Arrays.asList(cfcu1,cfcu2));
     }
 }

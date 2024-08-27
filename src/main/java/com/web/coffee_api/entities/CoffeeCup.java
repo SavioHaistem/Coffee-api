@@ -1,12 +1,13 @@
 package com.web.coffee_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "coffee_cup")
+@Table(name = "coffee_cup_tb")
 public class CoffeeCup implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -16,21 +17,21 @@ public class CoffeeCup implements Serializable {
     private Long id;
 
     @ManyToOne
-    @Column(name = "coffee_id")
+    @JoinColumn(name = "coffee_id")
     private Coffee coffee;
 
     @ManyToOne
-    @Column(name = "cup_id")
+    @JoinColumn(name = "cup_id")
     private Cup cup;
 
     @ManyToOne
-    @Column(name = "size_id")
-    private Size size;
+    @JoinColumn(name = "size_id")
+    private CupSize size;
 
     public CoffeeCup() {
     }
 
-    public CoffeeCup(Long id, Coffee coffee, Cup cup, Size size) {
+    public CoffeeCup(Long id, Coffee coffee, Cup cup, CupSize size) {
         this.id = id;
         this.coffee = coffee;
         this.cup = cup;
@@ -57,11 +58,11 @@ public class CoffeeCup implements Serializable {
         this.cup = cup;
     }
 
-    public Size getSize() {
+    public CupSize getSize() {
         return size;
     }
 
-    public void setSize(Size size) {
+    public void setSize(CupSize size) {
         this.size = size;
     }
 }

@@ -4,7 +4,10 @@ import com.web.coffee_api.entities.Cup;
 import com.web.coffee_api.repositories.CupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CupService {
@@ -18,5 +21,9 @@ public class CupService {
     
     public void put(Cup cup) {
         cupRepository.save(cup);
+    }
+
+    public List<Cup> findAll() {
+        return cupRepository.findAll();
     }
 }

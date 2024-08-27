@@ -1,4 +1,5 @@
 package com.web.coffee_api.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -18,13 +19,14 @@ public class Cup implements Serializable {
     private Long id;
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "cup_size",
             joinColumns = @JoinColumn(name = "cup_id"),
             inverseJoinColumns = @JoinColumn(name = "size_id")
     )
     private final Set<CupSize> sizes = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cup")
     private final Set<CoffeeCup> coffeeCups = new HashSet<>();
 
@@ -34,6 +36,10 @@ public class Cup implements Serializable {
     public Cup(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
