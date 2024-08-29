@@ -7,7 +7,6 @@ import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
 import com.web.coffee_api.repositories.CupSizeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,13 +34,21 @@ public class CoffeeCupService {
         coffeeCupRepository.deleteById(id);
     }
 
-    public void insert(CoffeeCup coffeeCup) {
-        CupSize cupSize = cupSizeRepository.findById(coffeeCup.getSize().getId()).orElse(null);
-        assert cupSize != null;
-        if (cupSize.getCups().contains(coffeeCup.getCup())) {
-            coffeeCupRepository.save(coffeeCup);
+    public CoffeeCup insert(CoffeeCup coffeeCup) {
+        if (coffeeCupRepository.findById(coffeeCup.getId()).isEmpty()) {
+            CupSize cupSize = cupSizeRepository.findById(coffeeCup.getSize().getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Cup at id: " +
+                            coffeeCup.getCup().getId())
+                    );
+            if (cupSize.getCups().contains(coffeeCup.getCup())) {
+                coffeeCupRepository.save(coffeeCup);
+            } else {
+                throw new IllegalArgumentException("Invalid size for cup: " + coffeeCup.getCup().getId());
+            }
         } else {
-            throw new IllegalArgumentException("invalid size for cup: " + coffeeCup.getId());
+            throw new IllegalArgumentException("Coffee cup on id: " + coffeeCup.getId() + " already exists");
         }
+
+        return coffeeCupRepository.findById(coffeeCup.getId()).orElseThrow();
     }
 }

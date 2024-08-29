@@ -32,7 +32,7 @@ public class CoffeeCupController {
     }
 
     @PostMapping
-    public void insert(@RequestBody CoffeeCup coffeeCup) {
-        coffeeCupService.insert(coffeeCup);
+    public ResponseEntity<CoffeeCup> insert(@RequestBody CoffeeCup coffeeCup) {
+        return ResponseEntity.ok().body(coffeeCupService.insert(coffeeCup));
     }
 }
