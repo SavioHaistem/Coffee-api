@@ -35,6 +35,7 @@ public class CoffeeService {
         updatedCoffee.setName(newCoffee.getName());
         updatedCoffee.setPrice(newCoffee.getPrice());
         updatedCoffee.setDescription(newCoffee.getDescription());
+        repository.save(updatedCoffee);
         return repository.findById(id).orElseThrow();
     }
 }

@@ -31,16 +31,19 @@ public class CoffeeCup implements Serializable {
     }
 
     public CoffeeCup(Long id, Coffee coffee, Cup cup, CupSize size) {
-        this.size = validSize(cup,size);
         this.id = id;
         this.coffee = coffee;
         this.cup = cup;
+        this.size = validSize(cup,size);
     }
 
     public CupSize validSize(Cup cup, CupSize cupSize) {
         //check if the cup has this size
         //if not, return some size of this cup
-        return cup.getSizes().contains(cupSize) ? cupSize : cup.getSizes().stream().findAny().orElseThrow();
+        return cup.getSizes().contains(cupSize) ? cupSize : cup.getSizes().stream().findAny().
+                orElseThrow(() -> new IllegalArgumentException(
+                        "invalid cup size at id: " + cupSize.getId() +
+                        " for cup at id: " + cup.getId()));
     }
 
     public Coffee getCoffee() {
@@ -67,7 +70,7 @@ public class CoffeeCup implements Serializable {
         return size;
     }
 
-    public void setSize(CupSize size) {
-        this.size = validSize(this.cup,size);
+    public void setSize(CupSize checkSize) {
+        this.size = checkSize;
     }
 }

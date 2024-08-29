@@ -42,7 +42,7 @@ public class TestConfig implements CommandLineRunner {
         cu3.getSizes().addAll(Arrays.asList(s1,s2,s3));
         cupRepository.saveAll(Arrays.asList(cu1,cu2,cu3));
 
-        CoffeeCup cfcu1 = new CoffeeCup(null,cf1,cu1,s1);
+        CoffeeCup cfcu1 = new CoffeeCup(null,cf1,cu1,s2);
         CoffeeCup cfcu2 = new CoffeeCup(null,cf1,cu1,s2);
         coffeeCupRepository.saveAll(Arrays.asList(cfcu1,cfcu2));
     }
