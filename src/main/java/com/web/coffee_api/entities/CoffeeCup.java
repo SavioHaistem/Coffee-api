@@ -1,6 +1,5 @@
 package com.web.coffee_api.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -32,14 +31,16 @@ public class CoffeeCup implements Serializable {
     }
 
     public CoffeeCup(Long id, Coffee coffee, Cup cup, CupSize size) {
+        this.size = validSize(cup,size);
         this.id = id;
         this.coffee = coffee;
         this.cup = cup;
-        this.size = checkSize(cup,size) ? size : cup.getSizes().stream().findAny().orElseThrow();
     }
 
-    public boolean checkSize(Cup cup, CupSize cupSize) {
-        return cup.getSizes().contains(cupSize);
+    public CupSize validSize(Cup cup, CupSize cupSize) {
+        //check if the cup has this size
+        //if not, return some size of this cup
+        return cup.getSizes().contains(cupSize) ? cupSize : cup.getSizes().stream().findAny().orElseThrow();
     }
 
     public Coffee getCoffee() {
@@ -67,10 +68,6 @@ public class CoffeeCup implements Serializable {
     }
 
     public void setSize(CupSize size) {
-        if (this.cup.getSizes().contains(size)) {
-            this.size = size;
-        } else {
-            //throw invalid size error
-        }
+        this.size = validSize(this.cup,size);
     }
 }
