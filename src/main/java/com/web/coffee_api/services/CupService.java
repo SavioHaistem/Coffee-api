@@ -30,8 +30,8 @@ public class CupService {
         if (cupRepository.findById(cup.getId()).isPresent()) {
             throw new IllegalArgumentException("cup at id: " + cup.getId() + " already exists");
         }
-        cupRepository.save(cup);
-        return cup;
+        Long generatedId = cupRepository.save(cup).getId();
+        return cupRepository.findById(generatedId).orElseThrow();
     }
 
     public void deleteById(Long id) {
