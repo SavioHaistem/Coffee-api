@@ -17,18 +17,25 @@ public class CoffeeService {
     private CupRepository cupRepository;
 
     public Coffee insert(Coffee coffee) {
-        repository.save(coffee);
-        return repository.findById(coffee.getId()).orElseThrow();
+        if (repository.findById(coffee.getId()).isEmpty()) {
+            Long generatedId = repository.save(coffee).getId();
+            return repository.findById(generatedId).orElseThrow();
+        }
+        throw new IllegalArgumentException("coffee at id: " + coffee.getId() + "already exists");
     }
+
     public Coffee findById(Long id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(id).orElseThrow();
     }
+
     public List<Coffee> findAll() {
         return repository.findAll();
     }
+
     public void deleteById(long id) {
         repository.deleteById(id);
     }
+
     public Coffee updateCoffeeById(Long id, Coffee newCoffee) {
         //TODO: update cups
         Coffee updatedCoffee = repository.findById(id).orElseThrow();

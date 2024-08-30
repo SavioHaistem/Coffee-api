@@ -27,25 +27,21 @@ public class CupService {
     }
 
     public Cup insert(Cup cup) {
-        if (cupRepository.findById(cup.getId()).isPresent()) {
-            throw new IllegalArgumentException("cup at id: " + cup.getId() + " already exists");
+        if (cupRepository.findById(cup.getId()).isEmpty()) {
+            Long generatedId = cupRepository.save(cup).getId();
+            return cupRepository.findById(generatedId).orElseThrow();
         }
-        Long generatedId = cupRepository.save(cup).getId();
-        return cupRepository.findById(generatedId).orElseThrow();
+        throw new IllegalArgumentException("cup at id: " + cup.getId() + " already exists");
     }
 
     public void deleteById(Long id) {
-        if (cupRepository.findById(id).isPresent()) {
-            cupRepository.deleteById(id);
-        } else {
-            throw new IllegalArgumentException("cup at id: " + id + " can't be found");
-        }
+        cupRepository.deleteById(id);
     }
 
     public Cup update(Long id, Cup newCup) {
         Cup oldCup = cupRepository.findById(id)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("newCup at id: " + id + "can't be found"));
+                        new IllegalArgumentException("cup at id: " + id + "can't be found"));
 
         oldCup.setName(newCup.getName());
         oldCup.getSizes().removeAll(oldCup.getSizes());

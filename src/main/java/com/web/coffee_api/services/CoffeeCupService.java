@@ -35,13 +35,14 @@ public class CoffeeCupService {
     }
 
     public CoffeeCup insert(CoffeeCup coffeeCup) {
+        Long generatedId = null;
         if (coffeeCupRepository.findById(coffeeCup.getId()).isEmpty()) {
             CupSize cupSize = cupSizeRepository.findById(coffeeCup.getSize().getId())
                     .orElseThrow(() -> new IllegalArgumentException("Cup at id: " +
                             coffeeCup.getCup().getId())
                     );
             if (cupSize.getCups().contains(coffeeCup.getCup())) {
-                coffeeCupRepository.save(coffeeCup);
+                generatedId = coffeeCupRepository.save(coffeeCup).getId();
             } else {
                 throw new IllegalArgumentException("Invalid size for cup: " + coffeeCup.getCup().getId());
             }
@@ -49,6 +50,6 @@ public class CoffeeCupService {
             throw new IllegalArgumentException("Coffee cup on id: " + coffeeCup.getId() + " already exists");
         }
 
-        return coffeeCupRepository.findById(coffeeCup.getId()).orElseThrow();
+        return coffeeCupRepository.findById(generatedId).orElseThrow();
     }
 }

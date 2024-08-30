@@ -12,8 +12,12 @@ public class CupSizeService {
     @Autowired
     private CupSizeRepository cupSizeRepository;
 
-    public void insert(CupSize cupSize) {
-        cupSizeRepository.save(cupSize);
+    public CupSize insert(CupSize cupSize) {
+        if (cupSizeRepository.findById(cupSize.getId()).isEmpty()) {
+            Long generatedId = cupSizeRepository.save(cupSize).getId();
+            return cupSizeRepository.findById(generatedId).orElseThrow();
+        }
+        throw new IllegalArgumentException("size at id: " + cupSize.getId() + " already exists");
     }
 
     public CupSize findById(Long id) {

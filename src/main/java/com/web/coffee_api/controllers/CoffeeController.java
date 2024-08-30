@@ -46,7 +46,7 @@ public class CoffeeController {
             @ApiResponse(responseCode = "201", description = "created coffee operation success"),
             //TODO: handle error of not inserted objects
     })
-    public ResponseEntity<Coffee> addCoffee(@RequestBody Coffee coffee) {
+    public ResponseEntity<Coffee> insert(@RequestBody Coffee coffee) {
         return ResponseEntity.ok().body(coffeeService.insert(coffee));
     }
 
