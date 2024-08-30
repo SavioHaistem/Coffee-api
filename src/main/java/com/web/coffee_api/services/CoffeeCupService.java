@@ -41,9 +41,12 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
 
         //TODO: check if update size test the cupSize is valid;
 
-        old_coffeeCup.setCoffee(new_coffeeCup.getCoffee());
-        old_coffeeCup.setCup(new_coffeeCup.getCup());
-        old_coffeeCup.setSize(old_coffeeCup.validSize(new_coffeeCup.getSize()));
+        old_coffeeCup.setCoffee(coffeeRepository.findById(new_coffeeCup.getCoffee().getId()).orElseThrow(()->
+                new IllegalArgumentException("the coffee at this coffee cup can't be found")));
+        old_coffeeCup.setCup(cupRepository.findById(new_coffeeCup.getCup().getId()).orElseThrow(()->
+                new IllegalArgumentException("the cup at this coffee cup can't be found")));
+        old_coffeeCup.setSize(old_coffeeCup.validSize(cupSizeRepository.findById(new_coffeeCup.getSize().getId()).orElseThrow(()->
+                new IllegalArgumentException("the size at this cup is invalid"))));
         Long generatedId = coffeeCupRepository.save(old_coffeeCup).getId();
 
         return coffeeCupRepository.findById(generatedId).orElseThrow();

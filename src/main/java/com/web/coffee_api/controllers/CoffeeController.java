@@ -65,7 +65,7 @@ public class CoffeeController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",description = "update coffee success")
     })
-    public ResponseEntity<Coffee> updateCoffeeById(@PathVariable Long id, @RequestBody Coffee newCoffee) {
-        return ResponseEntity.ok().body(coffeeService.updateCoffeeById(id, newCoffee));
+    public ResponseEntity<Coffee> updateById(@PathVariable Long id, @RequestBody Coffee new_coffee) {
+        return ResponseEntity.ok().body(coffeeService.updateById(id, new_coffee));
     }
 }

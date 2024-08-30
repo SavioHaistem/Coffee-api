@@ -37,7 +37,7 @@ public class CupController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Cup> updateById(@PathVariable Long id, @RequestBody Cup cup) {
-        return ResponseEntity.ok().body(cupService.update(id,cup));
+    public ResponseEntity<Cup> updateById(@PathVariable Long id, @RequestBody Cup new_cup) {
+        return ResponseEntity.ok().body(cupService.updateById(id,new_cup));
     }
 }

@@ -35,4 +35,9 @@ public class CoffeeCupController {
     public ResponseEntity<CoffeeCup> insert(@RequestBody CoffeeCup coffeeCup) {
         return ResponseEntity.ok().body(coffeeCupService.insert(coffeeCup));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CoffeeCup> updateById(@PathVariable Long id, @RequestBody CoffeeCup new_coffeeCup) {
+        return ResponseEntity.ok().body(coffeeCupService.updateById(id,new_coffeeCup));
+    }
 }
