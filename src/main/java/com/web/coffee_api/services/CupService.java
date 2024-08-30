@@ -9,21 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CupService {
+public class CupService implements ServiceBasics<Cup> {
     @Autowired
     private CupRepository cupRepository;
 
-    @EntityGraph(attributePaths = {"coffees","cupSizes"})
-    public Cup findById(Long id) {
-        return cupRepository.findById(id).orElseThrow();
-    }
-    
-    public void put(Cup cup) {
-        cupRepository.save(cup);
-    }
-
     public List<Cup> findAll() {
         return cupRepository.findAll();
+    }
+
+    public Cup findById(Long id) {
+        return cupRepository.findById(id).orElseThrow();
     }
 
     public Cup insert(Cup cup) {
@@ -38,18 +33,18 @@ public class CupService {
         cupRepository.deleteById(id);
     }
 
-    public Cup update(Long id, Cup newCup) {
-        Cup oldCup = cupRepository.findById(id)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("cup at id: " + id + "can't be found"));
+    public Cup updateById(Long id, Cup new_cup) {
+        Cup old_cup = cupRepository.findById(id).orElseThrow(()->
+            new IllegalArgumentException("can't find cup at id: " + id)
+        );
 
-        oldCup.setName(newCup.getName());
-        oldCup.getSizes().removeAll(oldCup.getSizes());
-        oldCup.getSizes().addAll(newCup.getSizes());
-        oldCup.getCoffeeCups().removeAll(oldCup.getCoffeeCups());
-        oldCup.getCoffeeCups().addAll(newCup.getCoffeeCups());
-        cupRepository.save(oldCup);
+        old_cup.setName(new_cup.getName());
+        old_cup.getCoffeeCups().removeAll(old_cup.getCoffeeCups());
+        old_cup.getCoffeeCups().addAll(new_cup.getCoffeeCups());
+        old_cup.getSizes().removeAll(old_cup.getSizes());
+        old_cup.getSizes().addAll(new_cup.getSizes());
+        Long generatedId = cupRepository.save(old_cup).getId();
 
-        return cupRepository.findById(id).orElseThrow();
+        return cupRepository.findById(generatedId).orElseThrow();
     }
 }

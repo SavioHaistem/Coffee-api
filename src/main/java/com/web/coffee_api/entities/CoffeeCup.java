@@ -46,6 +46,15 @@ public class CoffeeCup implements Serializable {
                         " for cup at id: " + cup.getId()));
     }
 
+    public CupSize validSize(CupSize cupSize) {
+        //check if the current cup has this size
+        //if not, return some size of this cup
+        return cup.getSizes().contains(cupSize) ? cupSize : cup.getSizes().stream().findAny().
+                orElseThrow(() -> new IllegalArgumentException(
+                        "invalid cup size at id: " + cupSize.getId() +
+                                " for cup at id: " + cup.getId()));
+    }
+
     public Coffee getCoffee() {
         return coffee;
     }

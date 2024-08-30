@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CoffeeCupService {
+public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
     @Autowired
     private CoffeeCupRepository coffeeCupRepository;
     @Autowired
@@ -32,6 +32,21 @@ public class CoffeeCupService {
 
     public void deleteById(Long id) {
         coffeeCupRepository.deleteById(id);
+    }
+
+    public CoffeeCup updateById(Long id, CoffeeCup new_coffeeCup) {
+        CoffeeCup old_coffeeCup = coffeeCupRepository.findById(id).orElseThrow(()->
+                new IllegalArgumentException("can't find coffee cup at id: " + id)
+        );
+
+        //TODO: check if update size test the cupSize is valid;
+
+        old_coffeeCup.setCoffee(new_coffeeCup.getCoffee());
+        old_coffeeCup.setCup(new_coffeeCup.getCup());
+        old_coffeeCup.setSize(old_coffeeCup.validSize(new_coffeeCup.getSize()));
+        Long generatedId = coffeeCupRepository.save(old_coffeeCup).getId();
+
+        return coffeeCupRepository.findById(generatedId).orElseThrow();
     }
 
     public CoffeeCup insert(CoffeeCup coffeeCup) {
