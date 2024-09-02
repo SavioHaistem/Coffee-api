@@ -30,7 +30,7 @@ public class CupSizeService implements ServiceBasics<CupSize> {
             Long generatedId = cupSizeRepository.save(cupSize).getId();
             return cupSizeRepository.findById(generatedId).orElseThrow();
         }
-        
+
         throw new ArgumentsException("size at id: "
                 + cupSize.getId()
                 + " already exists",
