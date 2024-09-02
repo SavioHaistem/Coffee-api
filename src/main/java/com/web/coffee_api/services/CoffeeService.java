@@ -4,9 +4,11 @@ import com.web.coffee_api.entities.Coffee;
 import com.web.coffee_api.entities.Cup;
 import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
+import com.web.coffee_api.services.exceptions.ArgumentsException;
 import com.web.coffee_api.services.exceptions.IllegalOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +33,13 @@ public class CoffeeService implements ServiceBasics<Coffee> {
             Long generatedId = repository.save(coffee).getId();
             return repository.findById(generatedId).orElseThrow();
         }
-        throw new IllegalArgumentException("coffee at id: " + coffee.getId() + "already exists");
+        throw new ArgumentsException(
+                "coffee at id: "
+                + coffee.getId()
+                + "already exists",
+                "caused by insert method at CoffeeService",
+                HttpStatus.CONFLICT
+        );
     }
 
     public void deleteById(Long id) {

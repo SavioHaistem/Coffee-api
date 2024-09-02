@@ -32,7 +32,9 @@ public class CupService implements ServiceBasics<Cup> {
             return cupRepository.findById(generatedId).orElseThrow();
         }
         throw new ArgumentsException(
-                "cup at id: " + cup.getId() + " already exists",
+                "cup at id: "
+                + cup.getId()
+                + " already exists",
                 "caused by: insert method at CupService",
                 HttpStatus.CONFLICT
         );

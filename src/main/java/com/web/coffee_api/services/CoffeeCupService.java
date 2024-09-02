@@ -6,9 +6,11 @@ import com.web.coffee_api.repositories.CoffeeCupRepository;
 import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
 import com.web.coffee_api.repositories.CupSizeRepository;
+import com.web.coffee_api.services.exceptions.ArgumentsException;
 import com.web.coffee_api.services.exceptions.IllegalOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -77,7 +79,12 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
                 throw new IllegalArgumentException("Invalid size for cup: " + coffeeCup.getCup().getId());
             }
         } else {
-            throw new IllegalArgumentException("Coffee cup on id: " + coffeeCup.getId() + " already exists");
+            throw new ArgumentsException("Coffee cup at id: "
+                    + coffeeCup.getId() +
+                    " already exists",
+                    " caused by insert method at CoffeeCupService",
+                    HttpStatus.CONFLICT
+            );
         }
 
         return coffeeCupRepository.findById(generatedId).orElseThrow();
