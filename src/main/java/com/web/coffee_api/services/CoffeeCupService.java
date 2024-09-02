@@ -6,7 +6,9 @@ import com.web.coffee_api.repositories.CoffeeCupRepository;
 import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
 import com.web.coffee_api.repositories.CupSizeRepository;
+import com.web.coffee_api.services.exceptions.IllegalOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +33,16 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
     }
 
     public void deleteById(Long id) {
-        coffeeCupRepository.deleteById(id);
+        try {
+            coffeeCupRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new IllegalOperation(
+                    "can't remove Coffee Cup at id: "
+                    + id
+                    + " because this is associated with others entities",
+                    e.getMessage()
+            );
+        }
     }
 
     public CoffeeCup updateById(Long id, CoffeeCup new_coffeeCup) {
@@ -45,7 +56,8 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
                 new IllegalArgumentException("the coffee at this coffee cup can't be found")));
         old_coffeeCup.setCup(cupRepository.findById(new_coffeeCup.getCup().getId()).orElseThrow(()->
                 new IllegalArgumentException("the cup at this coffee cup can't be found")));
-        old_coffeeCup.setSize(old_coffeeCup.validSize(cupSizeRepository.findById(new_coffeeCup.getSize().getId()).orElseThrow(()->
+        old_coffeeCup.setSize(old_coffeeCup.validSize(cupSizeRepository.findById(new_coffeeCup.getSize().getId()).
+                orElseThrow(()->
                 new IllegalArgumentException("the size at this cup is invalid"))));
         Long generatedId = coffeeCupRepository.save(old_coffeeCup).getId();
 

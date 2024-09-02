@@ -4,7 +4,9 @@ import com.web.coffee_api.entities.Coffee;
 import com.web.coffee_api.entities.Cup;
 import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
+import com.web.coffee_api.services.exceptions.IllegalOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +35,16 @@ public class CoffeeService implements ServiceBasics<Coffee> {
     }
 
     public void deleteById(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new IllegalOperation(
+                    "can't remove coffee at id: "
+                    + id
+                    + " because this is associated with others entities",
+                    e.getMessage()
+            );
+        }
     }
 
     public Coffee updateById(Long id, Coffee new_coffee) {

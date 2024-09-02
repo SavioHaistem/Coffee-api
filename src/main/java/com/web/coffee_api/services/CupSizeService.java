@@ -2,7 +2,10 @@ package com.web.coffee_api.services;
 
 import com.web.coffee_api.entities.CupSize;
 import com.web.coffee_api.repositories.CupSizeRepository;
+import com.web.coffee_api.services.exceptions.IllegalOperation;
+import com.web.coffee_api.services.exceptions.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class CupSizeService implements ServiceBasics<CupSize> {
     }
 
     public CupSize findById(Long id) {
-        return cupSizeRepository.findById(id).orElse(null);
+        return cupSizeRepository.findById(id).orElseThrow();
     }
 
     public CupSize insert(CupSize cupSize) {
@@ -29,7 +32,18 @@ public class CupSizeService implements ServiceBasics<CupSize> {
     }
 
     public void deleteById(Long id) {
-        cupSizeRepository.deleteById(id);
+        try {
+            if (findById(id) != null) {
+                cupSizeRepository.deleteById(id);
+            }
+        } catch (DataIntegrityViolationException e) {
+            throw new IllegalOperation(
+                    "can't remove size at id: "
+                            + id
+                            + " because this is associated with others entities"
+                    ,e.getMessage()
+            );
+        }
     }
 
     public CupSize updateById(Long id, CupSize new_cupSize) {

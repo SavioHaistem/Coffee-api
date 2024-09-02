@@ -2,8 +2,13 @@ package com.web.coffee_api.services;
 
 import com.web.coffee_api.entities.Cup;
 import com.web.coffee_api.repositories.CupRepository;
+import com.web.coffee_api.services.exceptions.ArgumentsException;
+import com.web.coffee_api.services.exceptions.IllegalOperation;
+import com.web.coffee_api.services.exceptions.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +31,11 @@ public class CupService implements ServiceBasics<Cup> {
             Long generatedId = cupRepository.save(cup).getId();
             return cupRepository.findById(generatedId).orElseThrow();
         }
-        throw new IllegalArgumentException("cup at id: " + cup.getId() + " already exists");
-    }
-
-    public void deleteById(Long id) {
-        cupRepository.deleteById(id);
+        throw new ArgumentsException(
+                "cup at id: " + cup.getId() + " already exists",
+                "caused by: insert method at CupService",
+                HttpStatus.CONFLICT
+        );
     }
 
     public Cup updateById(Long id, Cup new_cup) {
@@ -46,5 +51,16 @@ public class CupService implements ServiceBasics<Cup> {
         Long generatedId = cupRepository.save(old_cup).getId();
 
         return cupRepository.findById(generatedId).orElseThrow();
+    }
+
+    public void deleteById(Long id) {
+        try {
+            cupRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new IllegalOperation("can't remove cup at id: "
+                    + id
+                    + " because this is associated with others entities"
+                    ,e.getMessage());
+        }
     }
 }
