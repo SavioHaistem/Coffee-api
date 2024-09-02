@@ -6,6 +6,7 @@ import com.web.coffee_api.repositories.CoffeeRepository;
 import com.web.coffee_api.repositories.CupRepository;
 import com.web.coffee_api.services.exceptions.ArgumentsException;
 import com.web.coffee_api.services.exceptions.IllegalOperation;
+import com.web.coffee_api.services.exceptions.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,9 @@ public class CoffeeService implements ServiceBasics<Coffee> {
     }
 
     public Coffee findById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(()->
+            new ResourceNotFound("can't find coffee at id: " + id)
+        );
     }
 
     public Coffee insert(Coffee coffee) {

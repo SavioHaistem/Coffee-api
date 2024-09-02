@@ -8,6 +8,7 @@ import com.web.coffee_api.repositories.CupRepository;
 import com.web.coffee_api.repositories.CupSizeRepository;
 import com.web.coffee_api.services.exceptions.ArgumentsException;
 import com.web.coffee_api.services.exceptions.IllegalOperation;
+import com.web.coffee_api.services.exceptions.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,9 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
     }
 
     public CoffeeCup findById(Long id) {
-        return coffeeCupRepository.findById(id).orElseThrow();
+        return coffeeCupRepository.findById(id).orElseThrow(()->
+            new ResourceNotFound("can't find Coffee cup at id: " + id)
+        );
     }
 
     public void deleteById(Long id) {

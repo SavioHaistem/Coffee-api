@@ -22,7 +22,9 @@ public class CupSizeService implements ServiceBasics<CupSize> {
     }
 
     public CupSize findById(Long id) {
-        return cupSizeRepository.findById(id).orElseThrow();
+        return cupSizeRepository.findById(id).orElseThrow(()->
+            new ResourceNotFound("can't find size at id: " + id)
+        );
     }
 
     public CupSize insert(CupSize cupSize) {

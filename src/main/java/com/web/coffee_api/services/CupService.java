@@ -23,7 +23,9 @@ public class CupService implements ServiceBasics<Cup> {
     }
 
     public Cup findById(Long id) {
-        return cupRepository.findById(id).orElseThrow();
+        return cupRepository.findById(id).orElseThrow(()->
+                new ResourceNotFound("can't find cup at id: " + id)
+        );
     }
 
     public Cup insert(Cup cup) {
