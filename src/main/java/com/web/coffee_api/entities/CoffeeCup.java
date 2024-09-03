@@ -1,6 +1,8 @@
 package com.web.coffee_api.entities;
 
+import com.web.coffee_api.services.exceptions.ArgumentsException;
 import jakarta.persistence.*;
+import org.springframework.http.HttpStatus;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -50,9 +52,11 @@ public class CoffeeCup implements Serializable {
         //check if the current cup has this size
         //if not, return some size of this cup
         return cup.getSizes().contains(cupSize) ? cupSize : cup.getSizes().stream().findAny().
-                orElseThrow(() -> new IllegalArgumentException(
-                        "invalid cup size at id: " + cupSize.getId() +
-                                " for cup at id: " + cup.getId()));
+                orElseThrow(() -> new ArgumentsException(
+                        "invalid cup size at id: " + cupSize.getId() + " for cup at id: " + cup.getId(),
+                        "caused by validateSize method in CoffeeCup entity, cup size id: " + cupSize.getId(),
+                        HttpStatus.BAD_REQUEST
+                ));
     }
 
     public Coffee getCoffee() {

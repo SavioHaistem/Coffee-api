@@ -33,7 +33,8 @@ public class CupSizeService implements ServiceBasics<CupSize> {
             return cupSizeRepository.findById(generatedId).orElseThrow();
         }
 
-        throw new ArgumentsException("size at id: "
+        throw new ArgumentsException(
+                "size at id: "
                 + cupSize.getId()
                 + " already exists",
                 "caused by insert method at CupSizeService",
@@ -56,13 +57,13 @@ public class CupSizeService implements ServiceBasics<CupSize> {
     }
 
     public CupSize updateById(Long id, CupSize new_cupSize) {
-        CupSize old_cupSize = cupSizeRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("can't find size at id: " + id)
-        );
+        CupSize old_cupSize = findById(id);
 
         old_cupSize.setSize(new_cupSize.getSize());
         Long generatedId = cupSizeRepository.save(old_cupSize).getId();
 
-        return cupSizeRepository.findById(generatedId).orElseThrow();
+        return cupSizeRepository.findById(generatedId).orElseThrow(()->
+            new ResourceNotFound("can't find updated size at id: " + generatedId)
+        );
     }
 }

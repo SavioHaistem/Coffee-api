@@ -59,16 +59,15 @@ public class CoffeeService implements ServiceBasics<Coffee> {
     }
 
     public Coffee updateById(Long id, Coffee new_coffee) {
-
-        Coffee old_coffee = repository.findById(id).orElseThrow(()->
-            new IllegalArgumentException("can't find coffee at id: " + id)
-        );
+        Coffee old_coffee = findById(id);
 
         old_coffee.setName(new_coffee.getName());
         old_coffee.setPrice(new_coffee.getPrice());
         old_coffee.setDescription(new_coffee.getDescription());
         Long generatedId = repository.save(old_coffee).getId();
 
-        return repository.findById(generatedId).orElseThrow();
+        return repository.findById(generatedId).orElseThrow(()->
+             new ResourceNotFound("can't find updated coffee at id: " + generatedId)
+        );
     }
 }

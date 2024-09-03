@@ -43,9 +43,7 @@ public class CupService implements ServiceBasics<Cup> {
     }
 
     public Cup updateById(Long id, Cup new_cup) {
-        Cup old_cup = cupRepository.findById(id).orElseThrow(()->
-            new IllegalArgumentException("can't find cup at id: " + id)
-        );
+        Cup old_cup = findById(id);
 
         old_cup.setName(new_cup.getName());
         old_cup.getCoffeeCups().removeAll(old_cup.getCoffeeCups());
@@ -54,7 +52,9 @@ public class CupService implements ServiceBasics<Cup> {
         old_cup.getSizes().addAll(new_cup.getSizes());
         Long generatedId = cupRepository.save(old_cup).getId();
 
-        return cupRepository.findById(generatedId).orElseThrow();
+        return cupRepository.findById(generatedId).orElseThrow(()->
+            new ResourceNotFound("can't find updated cup at id: " + generatedId)
+        );
     }
 
     public void deleteById(Long id) {

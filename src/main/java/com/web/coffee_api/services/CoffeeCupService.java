@@ -51,35 +51,43 @@ public class CoffeeCupService implements ServiceBasics<CoffeeCup> {
     }
 
     public CoffeeCup updateById(Long id, CoffeeCup new_coffeeCup) {
-        CoffeeCup old_coffeeCup = coffeeCupRepository.findById(id).orElseThrow(()->
-                new IllegalArgumentException("can't find coffee cup at id: " + id)
-        );
+        CoffeeCup old_coffeeCup = findById(id);
 
-        //TODO: check if update size test the cupSize is valid;
+        old_coffeeCup.setCoffee(coffeeRepository.findById(
+                new_coffeeCup.getCoffee().getId()).orElseThrow(()->
+                new ResourceNotFound("the coffee at this coffee cup can't be found")));
+        old_coffeeCup.setCup(cupRepository.findById(
+                new_coffeeCup.getCup().getId()).orElseThrow(()->
+                new ResourceNotFound("the cup at this coffee cup can't be found")));
+        old_coffeeCup.setSize(old_coffeeCup.validSize(cupSizeRepository.findById(
+                new_coffeeCup.getSize().getId()).orElseThrow(()->
+                new ResourceNotFound("the size at this coffee cup can't be found"))));
 
-        old_coffeeCup.setCoffee(coffeeRepository.findById(new_coffeeCup.getCoffee().getId()).orElseThrow(()->
-                new IllegalArgumentException("the coffee at this coffee cup can't be found")));
-        old_coffeeCup.setCup(cupRepository.findById(new_coffeeCup.getCup().getId()).orElseThrow(()->
-                new IllegalArgumentException("the cup at this coffee cup can't be found")));
-        old_coffeeCup.setSize(old_coffeeCup.validSize(cupSizeRepository.findById(new_coffeeCup.getSize().getId()).
-                orElseThrow(()->
-                new IllegalArgumentException("the size at this cup is invalid"))));
         Long generatedId = coffeeCupRepository.save(old_coffeeCup).getId();
-
-        return coffeeCupRepository.findById(generatedId).orElseThrow();
+        return coffeeCupRepository.findById(generatedId).orElseThrow(()->
+            new ResourceNotFound("can't find updated coffee at id: " + generatedId)
+        );
     }
 
     public CoffeeCup insert(CoffeeCup coffeeCup) {
+        //TODO: try improve this solution;
         Long generatedId = null;
         if (coffeeCupRepository.findById(coffeeCup.getId()).isEmpty()) {
             CupSize cupSize = cupSizeRepository.findById(coffeeCup.getSize().getId())
-                    .orElseThrow(() -> new IllegalArgumentException("Cup at id: " +
-                            coffeeCup.getCup().getId())
+                    .orElseThrow(()-> new ResourceNotFound(
+                            "can't find size at coffee on coffee cup, size id: "
+                            + coffeeCup.getCup().getId())
                     );
             if (cupSize.getCups().contains(coffeeCup.getCup())) {
                 generatedId = coffeeCupRepository.save(coffeeCup).getId();
             } else {
-                throw new IllegalArgumentException("Invalid size for cup: " + coffeeCup.getCup().getId());
+                throw new ArgumentsException(
+                        "Invalid cup for size: "
+                        + cupSize.getId(),
+                        "caused by insert method at CoffeeCup service"
+                        + ", this size cannot contain this size",
+                        HttpStatus.BAD_REQUEST
+                );
             }
         } else {
             throw new ArgumentsException("Coffee cup at id: "
