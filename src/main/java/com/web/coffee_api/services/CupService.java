@@ -1,7 +1,9 @@
 package com.web.coffee_api.services;
 
 import com.web.coffee_api.entities.Cup;
+import com.web.coffee_api.entities.CupSize;
 import com.web.coffee_api.repositories.CupRepository;
+import com.web.coffee_api.repositories.CupSizeRepository;
 import com.web.coffee_api.services.exceptions.ArgumentsException;
 import com.web.coffee_api.services.exceptions.IllegalOperation;
 import com.web.coffee_api.services.exceptions.ResourceNotFound;
@@ -17,6 +19,8 @@ import java.util.List;
 public class CupService implements ServiceBasics<Cup> {
     @Autowired
     private CupRepository cupRepository;
+    @Autowired
+    private CupSizeRepository sizeRepository;
 
     public List<Cup> findAll() {
         return cupRepository.findAll();
@@ -30,6 +34,8 @@ public class CupService implements ServiceBasics<Cup> {
 
     public Cup insert(Cup cup) {
         if (cupRepository.findById(cup.getId()).isEmpty()) {
+            cup.getSizes().forEach(System.out::println);
+            sizeRepository.saveAll(cup.getSizes());
             Long generatedId = cupRepository.save(cup).getId();
             return cupRepository.findById(generatedId).orElseThrow();
         }

@@ -1,5 +1,7 @@
 package com.web.coffee_api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.web.coffee_api.services.exceptions.ArgumentsException;
 import jakarta.persistence.*;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,7 @@ public class CoffeeCup implements Serializable {
     private Coffee coffee;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = {"sizes"})
     @JoinColumn(name = "cup_id")
     private Cup cup;
 

@@ -19,7 +19,6 @@ public class Cup implements Serializable {
     private Long id;
     private String name;
 
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "cup_size",
             joinColumns = @JoinColumn(name = "cup_id"),
