@@ -74,7 +74,7 @@ public class CupService implements ServiceBasics<Cup> {
         old_cup.getCoffeeCups().removeAll(old_cup.getCoffeeCups());
         old_cup.getCoffeeCups().addAll(new_cup.getCoffeeCups());
         old_cup.getSizes().removeAll(old_cup.getSizes());
-        
+
         for (CupSize size : new_cup.getSizes()) {
             CupSize validSize = sizeRepository.findById(size.getId()).orElseThrow(()->
                     new ArgumentsException(
