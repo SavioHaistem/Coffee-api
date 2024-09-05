@@ -19,6 +19,21 @@ public class CupSizeController {
         return ResponseEntity.ok().body(cupSizeService.findAll());
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CupSize> getById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(cupSizeService.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<CupSize> insert(@RequestBody CupSize cupSize) {
+        return ResponseEntity.ok().body(cupSizeService.insert(cupSize));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteById (@PathVariable Long id) {
+        cupSizeService.deleteById(id);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<CupSize> updateById(@PathVariable Long id,@RequestBody CupSize new_cupSize) {
         return ResponseEntity.ok().body(cupSizeService.updateById(id,new_cupSize));
