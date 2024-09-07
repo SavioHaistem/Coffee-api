@@ -2,8 +2,6 @@ package com.web.coffee_api.controllers;
 import com.web.coffee_api.entities.Coffee;
 import com.web.coffee_api.services.CoffeeService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,57 +12,37 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/coffees")
-@Tag(name = "coffee-api")
+@Tag(name = "Coffees")
 public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = "search for a coffee that has the given id", method = "GET")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "coffee found with success"),
-            @ApiResponse(responseCode = "404", description = "coffee not found"),
-            @ApiResponse(responseCode = "500", description = "untreated exception")
-    })
+    @Operation(summary = "Retrieve a Coffee by its ID", method = "GET")
     public ResponseEntity<Coffee> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(coffeeService.findById(id));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = "returns a list of all the coffees in the database")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "operation success return a list of all coffees"),
-            @ApiResponse(responseCode = "500",description = "untreated exception")
-    })
+    @Operation(summary = "Retrieve a list of all Coffee entities", method = "GET")
     public ResponseEntity<List<Coffee>> getCoffees() {
         return ResponseEntity.ok().body(coffeeService.findAll());
     }
 
-    @PostMapping
-    @Operation(summary = "insert one coffee on coffees database", method = "POST")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "created coffee operation success"),
-            //TODO: handle error of not inserted objects
-    })
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Create a Coffee entity and return it", method = "POST")
     public ResponseEntity<Coffee> insert(@RequestBody Coffee coffee) {
         return ResponseEntity.ok().body(coffeeService.insert(coffee));
     }
 
     @DeleteMapping(value = "/{id}")
-    @Operation(summary = "delete one coffee based on id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204",description = "coffee removed with success"),
-            @ApiResponse(responseCode = "500",description = "untreated exception")
-    })
+    @Operation(summary = "Delete a Coffee entity by its id", method = "DELETE")
     public void removeById(@PathVariable Long id) {
         coffeeService.deleteById(id);
     }
 
-    @PutMapping(value = "/{id}")
-    @Operation(summary = "update one coffee based on id, it will return a updated coffee")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201",description = "update coffee success")
-    })
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Update a Coffee entity by its id and return it", method = "PUT", description = "this method cannot update the entity id")
     public ResponseEntity<Coffee> updateById(@PathVariable Long id, @RequestBody Coffee new_coffee) {
         return ResponseEntity.ok().body(coffeeService.updateById(id, new_coffee));
     }
