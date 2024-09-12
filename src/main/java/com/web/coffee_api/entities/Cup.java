@@ -18,6 +18,7 @@ public class Cup implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Double price;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "cup_size",
@@ -36,6 +37,7 @@ public class Cup implements Serializable {
     public Cup(Long id, String name) {
         this.id = id;
         this.name = name;
+        this.price = 0.0;
     }
 
     public Long getId() {
@@ -69,5 +71,9 @@ public class Cup implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public Double getPrice() {
+        return price;
     }
 }

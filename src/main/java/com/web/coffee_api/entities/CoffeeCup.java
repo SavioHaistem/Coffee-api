@@ -20,6 +20,7 @@ public class CoffeeCup implements Serializable {
     private Long id;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = {"price"})
     @JoinColumn(name = "coffee_id")
     private Coffee coffee;
 
@@ -88,5 +89,9 @@ public class CoffeeCup implements Serializable {
 
     public void setSize(CupSize checkSize) {
         this.size = checkSize;
+    }
+
+    public Double getPrice() {
+        return coffee.getPrice() * size.getSize().getVal();
     }
 }
