@@ -1,31 +1,31 @@
-<mxfile host="drawio-plugin" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2024-08-13T13:45:13.089Z" version="22.1.22" etag="bVYlAszu4Jvl4-YVTrbP" type="embed">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2024-09-17T12:02:30.362Z" etag="RR7EQDqvpQw4CliqQoZR" version="22.1.22" type="embed">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1352" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="c0POk-AYakL3CJ1UOKwH-1" value="&lt;b&gt;Coffee&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=none;gradientColor=none;swimlaneFillColor=#FFE599;" parent="1" vertex="1">
-          <mxGeometry x="90" y="70" width="160" height="160" as="geometry" />
+          <mxGeometry x="80" y="60" width="160" height="160" as="geometry" />
         </mxCell>
         <mxCell id="c0POk-AYakL3CJ1UOKwH-2" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUP&lt;/b&gt;&lt;/font&gt; cup&lt;br&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ENUM&lt;/font&gt;&lt;/b&gt; ingredients&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;DOUBLE&lt;/font&gt;&lt;/b&gt; price&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="c0POk-AYakL3CJ1UOKwH-1" vertex="1">
           <mxGeometry y="50" width="160" height="110" as="geometry" />
         </mxCell>
         <mxCell id="c0POk-AYakL3CJ1UOKwH-3" value="&lt;b&gt;Cup&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=none;gradientColor=none;swimlaneFillColor=#FFE599;" parent="1" vertex="1">
-          <mxGeometry x="350" y="85" width="160" height="140" as="geometry" />
+          <mxGeometry x="360" y="75" width="160" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="c0POk-AYakL3CJ1UOKwH-4" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;COFFEE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;coffee&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUPSIZE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;size&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="c0POk-AYakL3CJ1UOKwH-3" vertex="1">
+        <mxCell id="c0POk-AYakL3CJ1UOKwH-4" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;COFFEE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;coffee&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUPSIZE [ ]&lt;/b&gt;&lt;/font&gt;&amp;nbsp;sizes&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="c0POk-AYakL3CJ1UOKwH-3" vertex="1">
           <mxGeometry y="50" width="160" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" edge="1" parent="1" source="c0POk-AYakL3CJ1UOKwH-5" target="c0POk-AYakL3CJ1UOKwH-4">
+        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=ERzeroToMany;endFill=0;startArrow=ERzeroToMany;startFill=0;" parent="1" source="c0POk-AYakL3CJ1UOKwH-5" target="c0POk-AYakL3CJ1UOKwH-4" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="555" y="190" />
-              <mxPoint x="555" y="200" />
+              <mxPoint x="565" y="180" />
+              <mxPoint x="565" y="190" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="c0POk-AYakL3CJ1UOKwH-5" value="&lt;b&gt;CupSize&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=none;gradientColor=none;swimlaneFillColor=#FFE599;" parent="1" vertex="1">
-          <mxGeometry x="600" y="100" width="160" height="110" as="geometry" />
+          <mxGeometry x="610" y="90" width="160" height="110" as="geometry" />
         </mxCell>
         <mxCell id="c0POk-AYakL3CJ1UOKwH-6" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ENUM&lt;/font&gt;&lt;/b&gt;&amp;nbsp;size&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;CUP [ ]&lt;/font&gt; cups&lt;/b&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="c0POk-AYakL3CJ1UOKwH-5" vertex="1">
           <mxGeometry y="50" width="160" height="60" as="geometry" />
@@ -61,107 +61,11 @@
         <mxCell id="c0POk-AYakL3CJ1UOKwH-22" value="Coffees Relationship" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="335" y="270" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2" value="&lt;b&gt;Medium&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="660" y="640" width="160" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="3" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt;&amp;nbsp;id = 2&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ENUM&lt;/font&gt;&lt;/b&gt;&amp;nbsp;size = 2&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;CUP [ ]&lt;/font&gt; cups = 1, 3&lt;/b&gt;&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="2">
-          <mxGeometry y="50" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" edge="1" parent="1" source="c0POk-AYakL3CJ1UOKwH-4" target="c0POk-AYakL3CJ1UOKwH-2">
+        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;startArrow=ERmandOne;startFill=0;endArrow=ERmandOne;endFill=0;" parent="1" source="c0POk-AYakL3CJ1UOKwH-4" target="c0POk-AYakL3CJ1UOKwH-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="300" y="190" />
-              <mxPoint x="300" y="180" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="11" target="3">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="588" y="500" />
-              <mxPoint x="588" y="735" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="11" target="20">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="288" y="490" />
-              <mxPoint x="288" y="465" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="11" value="&lt;b&gt;Cup&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="350" y="380" width="165" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="12" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id = 1&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name = Lunar&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description = &quot;...&quot;&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;COFFEE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;coffee = 1&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUPSIZE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;size = 2&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="11">
-          <mxGeometry y="50" width="165" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="13" target="16">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="560" y="660" />
-              <mxPoint x="560" y="605" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="13" value="&lt;b&gt;Cup&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="350" y="540" width="160" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="14" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id = 2&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name = Glass&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description = &quot;...&quot;&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;COFFEE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;coffee = 2&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUPSIZE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;size = 1&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="13">
-          <mxGeometry y="50" width="160" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="15" value="&lt;b&gt;Small&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="660" y="510" width="160" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="16" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt;&amp;nbsp;id = 1&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ENUM&lt;/font&gt;&lt;/b&gt;&amp;nbsp;size = 1&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;CUP [ ]&lt;/font&gt; cups = 2, 4&lt;/b&gt;&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="15">
-          <mxGeometry y="50" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="17" target="3">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="585" y="820" />
-              <mxPoint x="585" y="735" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="17" target="24">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="285" y="810" />
-              <mxPoint x="285" y="825" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="17" value="&lt;b&gt;Cup&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="350" y="700" width="160" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="18" value="+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;LONG&lt;/font&gt;&lt;/b&gt; id = 3&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; name = Glass&lt;/div&gt;&lt;div&gt;+ &lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;STRING&lt;/font&gt;&lt;/b&gt; description = &quot;...&quot;&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;COFFEE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;coffee = 3&lt;br&gt;+ &lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUPSIZE&lt;/b&gt;&lt;/font&gt;&amp;nbsp;size = 3&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="17">
-          <mxGeometry y="50" width="160" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="19" value="&lt;b&gt;Coffee&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="60" y="360" width="160" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="20" value="&lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/font&gt;&amp;nbsp;= 1&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;NAME&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= Lunatic&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;DESCRIPTION&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= &quot; &quot;&lt;br&gt;&lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUP&lt;/b&gt;&lt;/font&gt;&amp;nbsp;= 1&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;INGREDIENTS&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= ...&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;PRICE&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= 20&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="19">
-          <mxGeometry y="50" width="160" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="21" value="&lt;b&gt;Coffee&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="60" y="540" width="160" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="22" value="&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ID&lt;/font&gt;&lt;/b&gt; id = 2&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;NAME&lt;/font&gt;&lt;/b&gt;&amp;nbsp;Earth coffee&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;DESCRIPTION&lt;/font&gt;&lt;/b&gt; ...&lt;br&gt;&lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUP&lt;/b&gt;&lt;/font&gt;&amp;nbsp;= 2&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;INGREDIENTS&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= ...&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;PRICE&lt;/font&gt;&amp;nbsp;= 2&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="21">
-          <mxGeometry y="50" width="160" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="23" value="&lt;b&gt;Coffee&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;swimlaneFillColor=#FFE599;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="60" y="720" width="160" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="24" value="&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;ID&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= 3&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;NAME&lt;/font&gt;&lt;/b&gt;&amp;nbsp;solar coffee&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;DESCRIPTION&lt;/font&gt;&lt;/b&gt;&amp;nbsp; = ...&lt;br&gt;&lt;font color=&quot;#9933ff&quot;&gt;&lt;b&gt;CUP&lt;/b&gt;&lt;/font&gt;&amp;nbsp;= 3&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;INGREDIENTS&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= ...&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#9933ff&quot;&gt;PRICE&lt;/font&gt;&lt;/b&gt;&amp;nbsp;= 10&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=#666666;fillColor=#f5f5f5;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;fontColor=#333333;" vertex="1" parent="23">
-          <mxGeometry y="50" width="160" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#f5f5f5;strokeColor=#666666;" edge="1" parent="1" source="14" target="22">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="285" y="650" />
-              <mxPoint x="285" y="645" />
+              <mxPoint x="310" y="180" />
+              <mxPoint x="310" y="170" />
             </Array>
           </mxGeometry>
         </mxCell>
