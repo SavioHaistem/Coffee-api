@@ -71,6 +71,7 @@ public class CupService implements ServiceBasics<Cup> {
         Cup old_cup = findById(id);
 
         old_cup.setName(new_cup.getName());
+        old_cup.setPrice(new_cup.getPrice());
         old_cup.getCoffeeCups().removeAll(old_cup.getCoffeeCups());
         old_cup.getCoffeeCups().addAll(new_cup.getCoffeeCups());
         old_cup.getSizes().removeAll(old_cup.getSizes());

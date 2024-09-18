@@ -52,6 +52,10 @@ public class Cup implements Serializable {
         this.name = name;
     }
 
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     public Set<CupSize> getSizes() {
         return sizes;
     }
