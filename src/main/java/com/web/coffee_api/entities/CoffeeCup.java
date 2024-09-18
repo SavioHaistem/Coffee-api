@@ -92,6 +92,6 @@ public class CoffeeCup implements Serializable {
     }
 
     public Double getPrice() {
-        return coffee.getPrice() * size.getSize().getVal();
+        return (coffee.getPrice() * size.getSize().getVal()) + cup.getPrice();
     }
 }
