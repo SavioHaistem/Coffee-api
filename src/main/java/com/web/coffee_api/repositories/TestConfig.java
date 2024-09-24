@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import java.util.Arrays;
 
 @Configuration
-@Profile("h2")
+@Profile("production")
 public class TestConfig implements CommandLineRunner {
     @Autowired
     private CoffeeRepository coffeeRepository;
