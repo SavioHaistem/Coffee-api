@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mysql:
     image: mysql:latest
@@ -12,7 +10,7 @@ services:
     ports:
       - "3307:3306"
     networks:
-      - coffee-api_network
+      - coffeeapinet
     volumes:
       - db_data:/var/lib/mysql
 
@@ -26,13 +24,29 @@ services:
     ports:
       - "8888:80"
     networks:
-      - coffee-api_network
+      - coffeeapinet
     depends_on:
       - mysql
 
+  coffee-api:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8080:8080"
+    networks:
+      - coffeeapinet
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/coffee-api_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: verysecret
+
 networks:
-  coffee-api_network:
-    driver: bridge
+  coffeeapinet:
 
 volumes:
   db_data:
